@@ -1,0 +1,14 @@
+Django
+Coffin
+Jinja2
+# MarkupSafe
+django-pagination
+psycopg2
+gunicorn
+# jsonlib
+networkx
+dj-database-url
+South
+path.py
+newrelic
+-e git+https://github.com/tkopczuk/django-smartsettings.git#egg=smartsettings
