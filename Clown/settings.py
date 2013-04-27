@@ -115,12 +115,12 @@ MIDDLEWARE_CLASSES = (
     # 'bladepolska.middleware.MessageMiddlewareOmitApi',
 )
 
-ROOT_URLCONF = 'BranchBot.urls'
+ROOT_URLCONF = 'Clown.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'BranchBot.wsgi.application'
+WSGI_APPLICATION = 'Clown.wsgi.application'
 
-AUTH_USER_MODEL = 'users.User'
+# AUTH_USER_MODEL = 'users.User'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -157,6 +157,11 @@ LOGGING = {
             'format': '%(message)s'
         },
     },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        }
+    },
     'handlers': {
         'null': {
             'level': 'DEBUG',
@@ -169,6 +174,7 @@ LOGGING = {
         },
         'mail_admins': {
             'level': 'ERROR',
+            'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler',
             'include_html': True,
         },
