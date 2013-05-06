@@ -13,3 +13,4 @@ South
 path.py
 newrelic
 -e git+https://github.com/tkopczuk/django-smartsettings.git#egg=smartsettings
+locustio

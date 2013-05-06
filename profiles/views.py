@@ -12,7 +12,7 @@ def show(request, id):
         shown_user = User.objects.get(pk=int(id))
     except User.DoesNotExist, ValueError:
         raise Http404
-
-    recent_tuits = InfinitePaginator(Tuit.objects.select_related('user').filter(user=shown_user).order_by("-added"), 10).page(request.page)
+    page = request.GET.get('page', 1)
+    recent_tuits = InfinitePaginator(Tuit.objects.select_related('user').filter(user=shown_user).order_by("-added"), 10).page(page)
 
     return render_to_response("profiles/show.html", {"shown_user": shown_user, "recent_tuits": recent_tuits}, context_instance=RequestContext(request))
