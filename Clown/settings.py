@@ -149,8 +149,10 @@ INSTALLED_APPS = (
 
 
 # App settings
-ACCOUNT_ACTIVATION_DAYS = 7
-
+ALLOWED_HOSTS = [
+    'localhost',  # Allow domain and subdomains
+    '.herokuapp.com',  # Also allow FQDN and subdomains
+]
 
 
 LOGGING = {
