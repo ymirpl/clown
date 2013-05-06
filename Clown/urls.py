@@ -4,8 +4,12 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    #   Administration panel
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^tuit/', include('tuitter.urls')),
+    url(r'^accounts/', include('profiles.urls')),
+    url(r'^mu-.*$', 'misc.views.return_42', {}, '42'),
+    url(r'^$', 'misc.views.index', {}, 'index'),
+    url(r'^jinja2/$', 'misc.views.index_jinja2', {}, 'index_jinja2'),
 )
 
 if settings.SERVE_STATIC_FILES:

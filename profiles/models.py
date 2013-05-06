@@ -1,18 +1,11 @@
 from django.contrib.auth.models import User
 from django.db import models
-from registration.signals import user_registered
-from registration.models import RegistrationProfile
+# from django.contrib.auth.models import AbstractBaseUser
 
-class TuitterUserProfile(models.Model):
-    """
-        Augumented user profile
-    """
-    picture = models.CharField(max_length=1024)
-    user    = models.ForeignKey(User, null=False, unique=True)
 
-# Connected signals
-def createUserProfileAndActivate(sender, user, request, **kwargs):
-    TuitterUserProfile.objects.get_or_create(user=user)
-    User.objects.filter(id=user.id).update(is_active=True)
-    RegistrationProfile.objects.filter(user=user).update(activation_key="ALREADY_ACTIVATED")
-user_registered.connect(createUserProfileAndActivate)
+# class TuitterUserProfile(AbstractBaseUser):
+#     username = models.CharField(max_length=40, unique=True, db_index=True)
+#     email = models.EmailField(max_length=254, unique=True)
+#     picture = models.CharField(max_length=1024)
+
+#     USERNAME_FIELD = username

@@ -141,7 +141,6 @@ INSTALLED_APPS = (
     'gunicorn',
     'south',
     'coffin',
-    'registration',
 
     'Clown',
     'profiles',
