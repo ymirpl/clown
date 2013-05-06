@@ -110,6 +110,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'chromelogger.DjangoMiddleware'
     # 'bladepolska.middleware.SessionMiddlewareOmitApi',
     # 'bladepolska.middleware.CsrfViewMiddlewareOmitApi',
     # 'bladepolska.mobiletokenlogin.middleware.MobileAPITokenAuthenticationMiddleware',

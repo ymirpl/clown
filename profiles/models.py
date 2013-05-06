@@ -1,5 +1,15 @@
 from django.contrib.auth.models import User
-from django.db import models
+
+
+def get_random_user(max_id=None):
+    if not max_id:
+        raise Exception('No max id given!')
+    return User.objects.raw('SELECT * FROM auth_user OFFSET floor(random()*%(max_id)d) LIMIT 1;').format(max_id=max_id).get()
+
+
+def get_max_id():
+    return User.objects.all().count()
+
 # from django.contrib.auth.models import AbstractBaseUser
 
 

@@ -3,6 +3,7 @@ Coffin
 Jinja2
 # MarkupSafe
 django-pagination
+factory_boy
 psycopg2
 gunicorn
 # jsonlib
