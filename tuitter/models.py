@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+
 class Tuit(models.Model):
     class Meta:
         get_latest_by = "added"
