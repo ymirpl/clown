@@ -108,6 +108,8 @@ MIDDLEWARE_CLASSES = (
     'bladepolska.middleware.InstrumentMiddleware',
     # 'bladepolska.middleware.SubdomainMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     # 'bladepolska.middleware.SessionMiddlewareOmitApi',
     # 'bladepolska.middleware.CsrfViewMiddlewareOmitApi',
     # 'bladepolska.mobiletokenlogin.middleware.MobileAPITokenAuthenticationMiddleware',
@@ -140,7 +142,16 @@ INSTALLED_APPS = (
     'south',
     'coffin',
     'registration',
+
+    'Clown',
+    'profiles',
+    'tuitter'
 )
+
+
+# App settings
+ACCOUNT_ACTIVATION_DAYS = 7
+
 
 
 LOGGING = {

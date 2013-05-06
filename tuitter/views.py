@@ -6,8 +6,8 @@ from django.template.context import RequestContext
 import networkx as nx
 import time
 
-from ATP_Performance_Test.tuitter.forms import AddTuitForm
-from ATP_Performance_Test.tuitter.models import Tuit
+from forms import AddTuitForm
+from models import Tuit
 
 @login_required
 def add(request):

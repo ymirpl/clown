@@ -5,12 +5,12 @@ import sys, os
 sys.path.append(os.path.join(os.path.split(os.path.realpath(__file__))[0], "../../"))
 
 from django.core.management import setup_environ
-import ATP_Performance_Test.settings
-setup_environ(ATP_Performance_Test.settings)
+import Clown.settings
+setup_environ(Clown.settings)
 
 from django.contrib.auth.models import User
 from django.db import transaction
-from ATP_Performance_Test.ext.django_registration.registration.models import RegistrationProfile
+from registration.models import RegistrationProfile
 
 def print_progress(cnt, total):
     if not cnt % 100:
