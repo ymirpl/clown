@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 def get_random_user(max_id=None):
     if not max_id:
         raise Exception('No max id given!')
-    return User.objects.raw('SELECT * FROM auth_user OFFSET floor(random()*%(max_id)d) LIMIT 1;').format(max_id=max_id).get()
+    return User.objects.raw('SELECT * FROM auth_user OFFSET floor(random()*%d) LIMIT 1;' % max_id)[0]
 
 
 def get_max_id():

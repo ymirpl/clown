@@ -1,11 +1,13 @@
 # coding: utf-8
 import sys
 from django.core.management.base import NoArgsCommand
-import factory
 import random
+from django.db import transaction
+
 from tuitter.models import Tuit
 from profiles.models import get_max_id, get_random_user
 
+TUITS_TO_CREATE = 10000
 
 class Command(NoArgsCommand):
     help = "Create test users"
@@ -18,14 +20,11 @@ class Command(NoArgsCommand):
         try:
             max_user_id = get_max_id()
 
-            class TuitFactory(factory.Factory):
-                FACTORY_FOR = Tuit
-                status = "Some status " + str(random.randint(0, 1024))
-                user = get_random_user(max_user_id)
-
-            for i in xrange(10000):
-                self.print_progress(i, 10000)
-                TuitFactory.create()
+            with transaction.commit_on_success():
+                for i in xrange(TUITS_TO_CREATE):
+                    self.print_progress(i, TUITS_TO_CREATE)
+                    t = Tuit(status="Some status " + str(random.randint(0, 1024)), user=get_random_user(max_user_id))
+                    t.save()
 
         except Exception:
             import traceback
