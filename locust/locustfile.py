@@ -9,7 +9,7 @@ class WebsiteTasks(TaskSet):
     @task(10)
     def get_tuits_page(self):
         # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-        self.client.get("/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 100)), name='main')
+        self.client.get("/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 500)), name='main')
 
     @task(1)
     def get_profile_page(self):
@@ -29,24 +29,24 @@ class SomePopularTuits(TaskSet):
 class TestAPI(TaskSet):
     @task(10)
     def get_api_page(self):
-        self.client.get('/api/v1/tuit/?format=json&limit=10&offest='+str(random.randint(1, TOTAL_TUITS_COUNT)), name="api main")
+        self.client.get('/api/v1/tuit/?format=json&limit=500&offest='+str(random.randint(1, TOTAL_TUITS_COUNT)), name="api main")
 
     @task(10)
     def get_tuits_page(self):
         # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-        self.client.get("/without_user/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 100)), name='main w/o user')
+        self.client.get("/without_user/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 500)), name='main w/o user')
 
 
 class TestTemplates(TaskSet):
-    # @task(10)
-    # def get_tuits_page_django(self):
-    #     # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-    #     self.client.get("/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 100)), name='main django templates')
-
     @task(10)
-    def get_tuits_page_jinja2(self):
+    def get_tuits_page_django(self):
         # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-        self.client.get("/jinja2/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 100)), name='main Jinja2')
+        self.client.get("/without_user/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 500)), name='main w/o user django templates')
+
+    # @task(10)
+    # def get_tuits_page_jinja2(self):
+    #     # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
+    #     self.client.get("/jinja2/without_user/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 500)), name='main w/o user Jinja2')
 
 
 class WebsiteUser(Locust):
