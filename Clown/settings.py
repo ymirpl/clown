@@ -154,6 +154,7 @@ ALLOWED_HOSTS = [
     '.herokuapp.com',  # Also allow FQDN and subdomains
 ]
 
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 
 LOGGING = {
     'version': 1,
@@ -250,7 +251,7 @@ smartsettings.config(globals(), {
         'STAGING',
         'PRODUCTION',
         'HEROKU',
-        'DOMEMCACHE'
+        'EC2MEM'
     ),
     'DEFAULT': 'DEV'  # default flavour always loads localsettings.py!
 })
