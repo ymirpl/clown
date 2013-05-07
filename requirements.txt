@@ -17,3 +17,4 @@ locustio
 pylibmc
 django-pylibmc-sasl
 django-tastypie
+markupsafe
