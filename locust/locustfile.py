@@ -18,7 +18,7 @@ class WebsiteTasks(TaskSet):
 
 
 class SomePopularTuits(TaskSet):
-    @task(80)
+    @task(30)
     def get_popular_tuit(self):
         self.client.get("/tuit/show/" + str(random.randint(1, 10)) + '/', name="popular")
 
