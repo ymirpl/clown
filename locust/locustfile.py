@@ -34,10 +34,22 @@ class TestAPI(TaskSet):
     @task(10)
     def get_tuits_page(self):
         # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-        self.client.get("/without_user/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 10)), name='main wo user')
+        self.client.get("/without_user/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 10)), name='main w/o user')
+
+
+class TestTemplates(TaskSet):
+    @task(10)
+    def get_tuits_page_django(self):
+        # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
+        self.client.get("/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 10)), name='main django templates')
+
+    @task(10)
+    def get_tuits_page_jinja2(self):
+        # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
+        self.client.get("/jinja2/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 10)), name='main Jinja2')
 
 
 class WebsiteUser(Locust):
-    task_set = TestAPI
+    task_set = TestTemplates
     min_wait = 0.5 * 1000
     max_wait = 1 * 1000
