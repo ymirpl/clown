@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
+from django.views.decorators.cache import cache_page
 import networkx as nx
 import time
 
@@ -24,6 +25,8 @@ def add(request):
 
     return render_to_response("tuitter/add.html", {"form": form}, context_instance=RequestContext(request))
 
+
+@cache_page(60 * 15)
 def show(request, id):
     try:
         tuit = Tuit.objects.select_related('user').get(pk=int(id))
