@@ -5,7 +5,7 @@ DOMAIN = "blade-clown.herokuapp.com"
 CACHES = {
     'default': {
         'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
-        'LOCATION': 'ec2-107-20-107-150.compute-1.amazonaws.com:11211',
+        'LOCATION': '10.195.193.58:11211',
         'BINARY': True,
         'TIMEOUT': 500
     }
