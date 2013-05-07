@@ -25,8 +25,8 @@ class InstrumentMiddleware(object):
             stats.print_callers(12)
             stats.print_callees(12)
             os.remove('/tmp/%s-%s.pro' % stamp)
-            #response._container[0] += "<pre>"+stream.getvalue()+"</pre>"
-            print stream.getvalue()
+            response._container[0] += "<pre>"+stream.getvalue()+"</pre>"
+            # print stream.getvalue()
             stream.close()
 
             from django.db import connection

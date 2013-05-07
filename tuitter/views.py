@@ -4,7 +4,7 @@ from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.views.decorators.cache import cache_page
-import networkx as nx
+
 import time
 
 from forms import AddTuitForm
@@ -36,6 +36,7 @@ def show(request, id):
     return render_to_response("tuitter/show.html", {"tuit": tuit}, context_instance=RequestContext(request))
 
 def heatCPU(request):
+    import networkx as nx
     # simple example graph
     ts = time.time()
     G = nx.generators.classic.complete_graph(300)

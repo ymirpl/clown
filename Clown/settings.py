@@ -42,7 +42,7 @@ USE_I18N = False
 USE_L10N = False
 
 # If you set this to False, Django will not use timezone-aware datetimes.
-USE_TZ = True
+USE_TZ = False
 
 DEPLOY_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
@@ -155,6 +155,7 @@ ALLOWED_HOSTS = [
 ]
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+TUITS_PER_PAGE = 500
 
 LOGGING = {
     'version': 1,

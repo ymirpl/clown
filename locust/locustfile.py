@@ -27,14 +27,19 @@ class SomePopularTuits(TaskSet):
 
 
 class TestAPI(TaskSet):
-    @task(10)
-    def get_api_page(self):
-        self.client.get('/api/v1/tuit/?format=json&limit=500&offest='+str(random.randint(1, TOTAL_TUITS_COUNT)), name="api main")
+    # @task(10)
+    # def get_api_page(self):
+    #     self.client.get('/api/v1/tuit/?format=json&limit=500&offest='+str(random.randint(1, TOTAL_TUITS_COUNT)), name="api main")
+
+    # @task(10)
+    # def get_tuits_page(self):
+    #     # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
+    #     self.client.get("/without_user/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 500)), name='main w/o user')
 
     @task(10)
     def get_tuits_page(self):
         # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-        self.client.get("/without_user/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 500)), name='main w/o user')
+        self.client.get("/jinja2/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 500)), name='main jinja2')
 
 
 class TestTemplates(TaskSet):
@@ -50,6 +55,6 @@ class TestTemplates(TaskSet):
 
 
 class WebsiteUser(Locust):
-    task_set = SomePopularTuits
-    min_wait = 0.5 * 1000
-    max_wait = 1 * 1000
+    task_set = TestAPI
+    min_wait = 0 * 1000
+    max_wait = 0 * 1000
