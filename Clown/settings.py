@@ -250,7 +250,7 @@ smartsettings.config(globals(), {
         'STAGING',
         'PRODUCTION',
         'HEROKU',
-        'DIGITAL_OCEAN'
+        'DOMEMCACHE'
     ),
     'DEFAULT': 'DEV'  # default flavour always loads localsettings.py!
 })
