@@ -12,6 +12,10 @@ class WebsiteTasks(TaskSet):
         self.client.get("/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 10)), name='main')
         # self.client.get("/", data={'page': str(random.randint(1, TOTAL_TUITS_COUNT / 10))})
 
+    @task(10)
+    def get_api_page(self):
+        self.client.get('/api/v1/tuit/?format=json&limit=10&offest='+str(random.randint(1, TOTAL_TUITS_COUNT)), name="api main")
+
     @task(1)
     def get_profile_page(self):
         self.client.get("/accounts/show/" + str(random.randint(1, TOTAL_USERS_COUNT)) + '/', name="profile")
@@ -28,6 +32,6 @@ class SomePopularTuits(TaskSet):
 
 
 class WebsiteUser(Locust):
-    task_set = SomePopularTuits
+    task_set = WebsiteTasks
     min_wait = 0.5 * 1000
     max_wait = 1 * 1000

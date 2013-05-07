@@ -16,3 +16,4 @@ newrelic
 locustio
 pylibmc
 django-pylibmc-sasl
+django-tastypie
