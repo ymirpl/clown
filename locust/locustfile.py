@@ -9,7 +9,7 @@ class WebsiteTasks(TaskSet):
     @task(10)
     def get_tuits_page(self):
         # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-        self.client.get("/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 10)), name='main')
+        self.client.get("/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 100)), name='main')
 
     @task(1)
     def get_profile_page(self):
@@ -34,19 +34,19 @@ class TestAPI(TaskSet):
     @task(10)
     def get_tuits_page(self):
         # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-        self.client.get("/without_user/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 10)), name='main w/o user')
+        self.client.get("/without_user/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 100)), name='main w/o user')
 
 
 class TestTemplates(TaskSet):
-    @task(10)
-    def get_tuits_page_django(self):
-        # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-        self.client.get("/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 10)), name='main django templates')
+    # @task(10)
+    # def get_tuits_page_django(self):
+    #     # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
+    #     self.client.get("/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 100)), name='main django templates')
 
     @task(10)
     def get_tuits_page_jinja2(self):
         # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-        self.client.get("/jinja2/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 10)), name='main Jinja2')
+        self.client.get("/jinja2/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 100)), name='main Jinja2')
 
 
 class WebsiteUser(Locust):
