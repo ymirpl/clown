@@ -39,7 +39,7 @@ class TestAPI(TaskSet):
     @task(10)
     def get_tuits_page(self):
         # get random page from 1..1000 (we assume we have 10 000 tuits, 10 per page)
-        self.client.get("/jinja2/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 500)), name='main jinja2')
+        self.client.get("/json/?page=" + str(random.randint(1, TOTAL_TUITS_COUNT / 500)), name='main jinja2')
 
 
 class TestTemplates(TaskSet):
